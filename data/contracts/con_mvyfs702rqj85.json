@@ -1,0 +1,14 @@
+{
+  "createdAt": "2026-11-01T23:03:42.194Z",
+  "id": "con_mvyfs702rqj85",
+  "supplierId": "sup_mvyfq23ls83q5",
+  "status": "active",
+  "quoteId": "quo_mvyfq23l07xuu",
+  "updatedAt": "2026-11-01T23:04:12.058Z",
+  "categoryId": "cat_espaco",
+  "title": "150 pessoas",
+  "totalValue": 1900000,
+  "contractDate": "2026-11-01",
+  "paymentMethodDefault": "pix",
+  "paymentTerms": "20% R$5.000,00 / 13x 1.077,00"
+}
