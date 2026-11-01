@@ -1,0 +1,12 @@
+{
+  "createdAt": "2026-11-01T23:02:02.529Z",
+  "id": "quo_mvyfq23l07xuu",
+  "supplierId": "sup_mvyfq23ls83q5",
+  "status": "open",
+  "receivedAt": "2026-11-01",
+  "updatedAt": "2026-11-01T23:02:32.932Z",
+  "categoryId": "cat_espaco",
+  "amount": 1900000,
+  "paymentTerms": "20% R$5.000,00 / 13x 1.077,00",
+  "favorite": true
+}
