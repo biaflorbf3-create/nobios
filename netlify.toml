@@ -1,0 +1,22 @@
+# Nobios no Netlify: publica o app e as duas funções que conversam com o GitHub.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+  # Gravações do app geram commits só em data/. Elas NÃO precisam de um novo deploy:
+  # se o commit mexeu apenas em data/, o Netlify pula o build.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)data'"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # o app usa os dados do GitHub (em vez dos dados de exemplo)
+  VITE_DATA_SOURCE = "http"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
