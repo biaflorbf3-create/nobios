@@ -1,9 +1,9 @@
 {
+  "createdAt": "2026-11-01T22:07:02.371Z",
   "id": "cat_terno",
   "name": "Terno",
-  "plannedBudget": null,
+  "plannedBudget": 100000,
   "need": "required",
   "sortOrder": 10,
-  "createdAt": "2026-11-01T22:07:02.371Z",
-  "updatedAt": "2026-11-01T22:07:02.371Z"
+  "updatedAt": "2026-11-01T23:24:16.585Z"
 }
