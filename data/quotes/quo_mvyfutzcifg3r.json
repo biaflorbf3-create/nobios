@@ -2,11 +2,12 @@
   "createdAt": "2026-11-01T23:05:45.288Z",
   "id": "quo_mvyfutzcifg3r",
   "supplierId": "sup_mvyfutzclo84h",
-  "status": "open",
+  "status": "accepted",
   "receivedAt": "2026-11-01",
-  "updatedAt": "2026-11-01T23:06:15.195Z",
+  "updatedAt": "2026-11-01T23:07:23.433Z",
   "categoryId": "cat_buffet",
   "amount": 2625000,
   "paymentTerms": "10% de entrada",
-  "favorite": true
+  "favorite": true,
+  "contractId": "con_mvyfwaouwkrux"
 }
