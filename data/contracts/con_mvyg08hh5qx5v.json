@@ -1,0 +1,14 @@
+{
+  "createdAt": "2026-11-01T23:09:57.365Z",
+  "id": "con_mvyg08hh5qx5v",
+  "supplierId": "sup_mvyfz0zf99lmt",
+  "status": "active",
+  "quoteId": "quo_mvyfz0zffgnfl",
+  "updatedAt": "2026-11-01T23:10:27.207Z",
+  "categoryId": "cat_musica",
+  "title": "DJ / Banda",
+  "totalValue": 440000,
+  "contractDate": "2026-11-01",
+  "paymentMethodDefault": "pix",
+  "paymentTerms": "20% de entrada R$880,00"
+}

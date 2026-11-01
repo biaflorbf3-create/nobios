@@ -2,11 +2,12 @@
   "createdAt": "2026-11-01T23:09:00.987Z",
   "id": "quo_mvyfz0zffgnfl",
   "supplierId": "sup_mvyfz0zf99lmt",
-  "status": "open",
+  "status": "accepted",
   "receivedAt": "2026-11-01",
-  "updatedAt": "2026-11-01T23:09:30.809Z",
+  "updatedAt": "2026-11-01T23:10:27.207Z",
   "categoryId": "cat_musica",
   "amount": 440000,
   "paymentTerms": "20% de entrada R$880,00",
-  "favorite": true
+  "favorite": true,
+  "contractId": "con_mvyg08hh5qx5v"
 }
