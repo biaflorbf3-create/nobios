@@ -1,0 +1,12 @@
+{
+  "createdAt": "2026-11-01T23:15:04.446Z",
+  "id": "quo_mvyg6tfi7abka",
+  "supplierId": "sup_mvyg6tfiljv86",
+  "status": "open",
+  "receivedAt": "2026-11-01",
+  "updatedAt": "2026-11-01T23:15:34.625Z",
+  "categoryId": "cat_fotografia",
+  "amount": 799900,
+  "paymentTerms": "20%",
+  "favorite": true
+}
