@@ -1,0 +1,11 @@
+{
+  "id": "wedding",
+  "coupleName": "Bia e Vini",
+  "weddingDate": "2027-09-12",
+  "totalBudget": 8000000,
+  "dueSoonDays": 7,
+  "nearLimitPct": 85,
+  "overallAlertPct": 90,
+  "createdAt": "2026-11-01T22:07:02.371Z",
+  "updatedAt": "2026-11-01T22:07:02.371Z"
+}
