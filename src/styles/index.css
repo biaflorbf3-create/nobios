@@ -1,0 +1,122 @@
+@import '@fontsource/plus-jakarta-sans/latin-400.css';
+@import '@fontsource/plus-jakarta-sans/latin-500.css';
+@import '@fontsource/plus-jakarta-sans/latin-600.css';
+@import '@fontsource/plus-jakarta-sans/latin-700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* valores iniciais (tema claro) — o ThemeProvider sobrescreve ao carregar */
+:root {
+  --paper: 238 231 250;
+  --surface: 255 255 255;
+  --cream: 238 242 240;
+  --champagne: 227 233 230;
+  --sand: 227 233 230;
+  --ink: 20 26 29;
+  --ink-soft: 58 67 72;
+  --ink-muted: 106 116 122;
+  --ink-faint: 154 163 168;
+  --accent: 124 58 237;
+  --accent-strong: 109 40 217;
+  --accent-soft: 237 229 254;
+  --ok: 124 58 237;
+  --warn: 201 130 10;
+  --danger: 220 74 70;
+  --info: 91 107 140;
+  --grad-from: 155 107 255;
+  --grad-to: 91 33 182;
+  --glow-a: 159 122 234;
+  --glow-b: 196 161 247;
+  --glow-c: 217 198 251;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* fundo em degradê roxo: brilho forte no topo que se dissolve no fundo.
+     Camada fixa (::before) em vez de background-attachment, que o Safari do iPhone ignora. */
+  body {
+    @apply bg-paper font-sans text-[14px] leading-5 text-ink;
+    min-height: 100vh;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-color: rgb(var(--paper));
+    background-image:
+      radial-gradient(75% 60% at 15% -10%, rgb(var(--glow-a) / 0.85), transparent 70%),
+      radial-gradient(60% 50% at 90% -5%, rgb(var(--glow-b) / 0.7), transparent 72%),
+      radial-gradient(80% 55% at 70% 110%, rgb(var(--glow-c) / 0.8), transparent 70%),
+      linear-gradient(180deg, rgb(var(--glow-a) / 0.25) 0%, rgb(var(--paper)) 60%);
+  }
+  ::selection {
+    background: rgb(var(--accent) / 0.25);
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 2px;
+  }
+  input[type='checkbox'],
+  input[type='radio'] {
+    accent-color: rgb(var(--accent));
+  }
+  input[type='date']::-webkit-calendar-picker-indicator {
+    opacity: 0.6;
+  }
+  .dark input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+@layer components {
+  /* card grande arredondado: sombra suave no claro, borda sutil no escuro */
+  /* card de vidro: deixa o degradê do fundo aparecer levemente */
+  .card {
+    @apply rounded-card shadow-card;
+    background-color: rgb(var(--surface) / 0.82);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+  }
+  .dark .card {
+    @apply shadow-none;
+    background-color: rgb(var(--surface) / 0.62);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.07);
+  }
+  .glass {
+    background-color: rgb(var(--surface) / 0.8);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+  }
+  .dark .glass {
+    background-color: rgb(var(--surface) / 0.6);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.07);
+  }
+  .label {
+    @apply text-label font-semibold uppercase text-ink-muted;
+  }
+  /* títulos de seção: negrito, sem caixa alta (estilo das referências) */
+  h2.label {
+    @apply text-[15px] font-bold normal-case tracking-[-0.01em] text-ink;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+  .btn-grad {
+    background-image: linear-gradient(135deg, rgb(var(--grad-from)), rgb(var(--grad-to)));
+  }
+  /* quadradinho de ícone (estilo do card "Balance" da referência) */
+  .icon-tile {
+    @apply flex shrink-0 items-center justify-center rounded-[14px] bg-accent-soft text-accent;
+  }
+  .page-title {
+    @apply text-[30px] font-bold leading-tight tracking-[-0.02em] text-ink lg:text-[34px];
+  }
+}
