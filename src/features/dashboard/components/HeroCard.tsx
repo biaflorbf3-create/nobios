@@ -13,7 +13,7 @@ export function HeroCard({ finance, wedding }: { finance: Finance; wedding: Wedd
   const over = t.available < 0;
   const openCount = finance.installments.filter((v) => v.contract.status === 'active' && v.remaining > 0).length;
   return (
-    <section aria-label="Resumo financeiro" className="btn-grad relative overflow-hidden rounded-card p-6 text-white shadow-glow lg:p-7">
+    <section aria-label="Resumo financeiro" className="btn-grad relative isolate overflow-hidden rounded-card p-5 text-white shadow-glow [clip-path:inset(0_round_24px)] sm:p-6 lg:p-7">
       {/* anéis decorativos discretos */}
       <svg className="pointer-events-none absolute -right-16 -top-20 opacity-[0.12]" width="320" height="320" viewBox="0 0 320 320" aria-hidden>
         <circle cx="160" cy="160" r="120" fill="none" stroke="white" strokeWidth="2" />

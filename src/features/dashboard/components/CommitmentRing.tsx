@@ -9,7 +9,7 @@ export function CommitmentRing({ finance, alertPct }: { finance: Finance; alertP
   const over = t.commitment > 1;
   const alert = t.commitment * 100 >= alertPct;
   return (
-    <section className="card flex h-full flex-col p-6" aria-label="Orçamento comprometido">
+    <section className="card flex h-full flex-col p-5 sm:p-6" aria-label="Orçamento comprometido">
       <div className="flex items-start justify-between">
         <h2 className="text-[15px] font-bold tracking-[-0.01em]">Orçamento comprometido</h2>
       </div>

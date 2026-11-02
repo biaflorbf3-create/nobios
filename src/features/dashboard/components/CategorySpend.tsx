@@ -17,7 +17,7 @@ export function CategorySpend({ categories, totalContracted }: { categories: Cat
   const top = rows[0];
 
   return (
-    <section className="card flex h-full flex-col p-6" aria-label="Onde o dinheiro está indo">
+    <section className="card flex h-full flex-col p-5 sm:p-6" aria-label="Onde o dinheiro está indo">
       <h2 className="text-[15px] font-bold tracking-[-0.01em]">Onde o dinheiro está indo</h2>
       {top && (
         <p className="mt-1 text-[12.5px] text-ink-muted">

@@ -15,7 +15,7 @@ export function AlertsPanel({ alerts }: { alerts: Alert[] }) {
   const [all, setAll] = useState(false);
   const shown = all ? alerts : alerts.slice(0, LIMIT);
   return (
-    <section className="card flex h-full flex-col p-6" aria-label="Alertas">
+    <section className="card flex h-full flex-col p-5 sm:p-6" aria-label="Alertas">
       <div className="flex items-center justify-between">
         <h2 className="text-[15px] font-bold tracking-[-0.01em]">Alertas</h2>
         {alerts.length > 0 && <span className="num rounded-full bg-cream px-2.5 py-1 text-[11.5px] font-bold text-ink-soft">{alerts.length}</span>}

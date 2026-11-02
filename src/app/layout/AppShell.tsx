@@ -10,7 +10,7 @@ export function AppShell({ route, children }: { route: Section; children: ReactN
     <div className="min-h-screen">
       <Sidebar route={route} />
       {/* topo compacto no celular */}
-      <header className="sticky top-0 z-20 flex items-center gap-2.5 bg-paper/40 px-4 py-2.5 backdrop-blur-xl lg:hidden">
+      <header className="sticky top-0 z-20 flex items-center gap-2.5 bg-paper/40 px-3 pb-2.5 pt-[max(10px,env(safe-area-inset-top))] backdrop-blur-xl lg:hidden">
         <a href="#painel" aria-label="Nobios · início">
           <Logo size={34} compact />
         </a>
@@ -21,7 +21,7 @@ export function AppShell({ route, children }: { route: Section; children: ReactN
           </a>
         </div>
       </header>
-      <main className="px-4 pt-4 pb-28 sm:px-6 lg:ml-[256px] lg:px-8 lg:pt-8 lg:pb-12">
+      <main className="px-3 pt-3 pb-[calc(96px+env(safe-area-inset-bottom))] sm:px-6 lg:ml-[256px] lg:px-8 lg:pt-8 lg:pb-12">
         <div className="mx-auto max-w-[1200px]">{children}</div>
       </main>
       <MobileTabBar route={route} />

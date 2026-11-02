@@ -8,7 +8,7 @@ export function MobileTabBar({ route }: { route: Section }) {
   return (
     <nav
       aria-label="Principal"
-      className="fixed inset-x-3 bottom-3 z-30 grid grid-cols-5 items-end glass rounded-[26px] px-2 pt-2 pb-[max(8px,env(safe-area-inset-bottom))] shadow-hover lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-30 bg-surface/95 backdrop-blur-xl dark:bg-[#1B1527]/95 dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.07)] grid grid-cols-5 items-end rounded-t-[24px] px-1 pt-2 pb-[max(10px,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgb(0_0_0/0.12)] lg:hidden"
     >
       {[a, b].map((item) => (
         <Tab key={item.route} item={item} active={route === item.route} />

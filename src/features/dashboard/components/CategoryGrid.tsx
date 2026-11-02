@@ -15,7 +15,7 @@ export function CategoryGrid({ finance }: { finance: Finance }) {
   const hidden = finance.categories.filter((c) => c.category.need !== 'dismissed').length - cats.length;
   const pending = finance.pendingCategories.length;
   return (
-    <section className="card p-6" aria-label="Categorias">
+    <section className="card p-5 sm:p-6" aria-label="Categorias">
       <div className="mb-4 flex flex-wrap items-end justify-between gap-2">
         <div>
           <h2 className="text-[15px] font-bold tracking-[-0.01em]">Categorias</h2>

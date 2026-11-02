@@ -34,7 +34,7 @@ export function UpcomingPayments({ finance, snapshot, to, periodLabel }: { finan
   const category = new Map(snapshot.categories.map((c) => [c.id, c]));
 
   return (
-    <section className="card flex h-full flex-col p-6" aria-label="Próximos pagamentos">
+    <section className="card flex h-full flex-col p-5 sm:p-6" aria-label="Próximos pagamentos">
       <div className="flex items-start justify-between gap-3">
         <div>
           <h2 className="text-[15px] font-bold tracking-[-0.01em]">Próximos pagamentos</h2>

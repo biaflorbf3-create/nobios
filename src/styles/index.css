@@ -36,6 +36,19 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+  body {
+    overflow-x: clip;
+  }
+  /* iPhone: campos com menos de 16px fazem o Safari dar zoom e deslocar a página */
+  @media (max-width: 639px) {
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
   }
   /* fundo em degradê roxo: brilho forte no topo que se dissolve no fundo.
      Camada fixa (::before) em vez de background-attachment, que o Safari do iPhone ignora. */

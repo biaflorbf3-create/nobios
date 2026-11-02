@@ -31,7 +31,7 @@ export function CashflowChart({ cashflow, periodLabel }: { cashflow: Cashflow; p
   const single = rows.length === 1;
 
   return (
-    <section className="card flex h-full flex-col p-6" aria-label="Fluxo de pagamentos">
+    <section className="card flex h-full flex-col p-5 sm:p-6" aria-label="Fluxo de pagamentos">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h2 className="text-[15px] font-bold tracking-[-0.01em]">Fluxo de pagamentos</h2>
