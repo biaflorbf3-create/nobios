@@ -1,0 +1,12 @@
+{
+  "createdAt": "2026-11-02T17:21:39.368Z",
+  "id": "quo_mvzj065kh10pe",
+  "supplierId": "sup_mvzj065kulccs",
+  "status": "open",
+  "receivedAt": "2026-11-02",
+  "updatedAt": "2026-11-02T17:22:11.509Z",
+  "categoryId": "cat_doces",
+  "amount": 450000,
+  "paymentTerms": "6x sem juros no cartão",
+  "favorite": true
+}
