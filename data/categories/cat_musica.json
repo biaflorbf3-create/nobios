@@ -1,9 +1,9 @@
 {
+  "createdAt": "2026-11-01T22:07:02.371Z",
   "id": "cat_musica",
   "name": "DJ / Banda",
-  "plannedBudget": null,
+  "plannedBudget": 500000,
   "need": "required",
   "sortOrder": 7,
-  "createdAt": "2026-11-01T22:07:02.371Z",
-  "updatedAt": "2026-11-01T22:07:02.371Z"
+  "updatedAt": "2026-11-02T00:22:32.302Z"
 }
