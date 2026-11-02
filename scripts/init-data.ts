@@ -13,7 +13,7 @@ import { createSeed } from '../src/data/mock/seed';
 import type { Snapshot } from '../src/domain/types';
 import { reais } from '../src/lib/money';
 
-const COLLECTIONS = ['categories', 'suppliers', 'quotes', 'contracts', 'installments', 'payments', 'people', 'users'] as const;
+const COLLECTIONS = ['categories', 'suppliers', 'quotes', 'contracts', 'installments', 'payments', 'people', 'users', 'tasks'] as const;
 
 /** Snapshot → { "data/categories/cat_buffet.json": "…" } */
 export function snapshotToFiles(s: Snapshot, dir = 'data'): Record<string, string> {
@@ -38,6 +38,7 @@ export function emptySnapshot(): Snapshot {
     payments: [],
     people: seed.people,
     users: [],
+    tasks: [],
   };
 }
 

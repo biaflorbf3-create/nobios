@@ -1,4 +1,4 @@
-import type { Category, Contract, Installment, Payment, Person, Quote, Supplier, Wedding } from '../../domain/types';
+import type { Category, Contract, Installment, Payment, Person, Quote, Supplier, Task, Wedding } from '../../domain/types';
 import type { AnyRecord, Change } from '../DataSource';
 import { dataSource } from '../sources';
 import { createRepository } from './createRepository';
@@ -72,7 +72,7 @@ export const personRepository = {
   async removeOrDeactivate(id: string) {
     const s = await dataSource.load();
     const p = s.people.find((x) => x.id === id)!;
-    if (s.payments.some((x) => x.paidBy === id)) return dataSource.commit([put('people', { ...p, active: false })], 'Desativar pessoa');
+    if (s.payments.some((x) => x.paidBy === id) || s.tasks.some((t) => t.assigneeId === id)) return dataSource.commit([put('people', { ...p, active: false })], 'Desativar pessoa');
     return dataSource.commit([{ op: 'delete', entity: 'people', id }], 'Excluir pessoa');
   },
 };
@@ -162,6 +162,16 @@ export const paymentRepository = {
   /** estorno: remove o pagamento; a parcela volta a ficar em aberto */
   reverse(id: string) {
     return dataSource.commit([{ op: 'delete', entity: 'payments', id }], 'Estornar pagamento');
+  },
+};
+
+export const taskRepository = {
+  ...createRepository(dataSource, 'tasks'),
+  save(task: Task) {
+    return dataSource.commit([put('tasks', task)], `Salvar tarefa: ${task.title}`);
+  },
+  remove(id: string) {
+    return dataSource.commit([{ op: 'delete', entity: 'tasks', id }], 'Excluir tarefa');
   },
 };
 

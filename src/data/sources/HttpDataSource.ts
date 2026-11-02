@@ -27,7 +27,8 @@ export class HttpDataSource implements DataSource {
         const res = await fetch(`${this.base}/snapshot`, { headers: { Accept: 'application/json' }, cache: 'no-store' });
         const body = await readJson(res);
         if (!res.ok) throw new Error(body.error ?? `Não foi possível carregar os dados (${res.status}).`);
-        this.cache = body.snapshot as Snapshot;
+        const s = body.snapshot as Snapshot;
+        this.cache = { ...s, tasks: s.tasks ?? [] };
         this.loadedAt = Date.now();
         return this.cache;
       })().finally(() => {

@@ -21,7 +21,7 @@ export function AppShell({ route, children }: { route: Section; children: ReactN
           </a>
         </div>
       </header>
-      <main className="px-3 pt-3 pb-[calc(96px+env(safe-area-inset-bottom))] sm:px-6 lg:ml-[256px] lg:px-8 lg:pt-8 lg:pb-12">
+      <main className="px-3 pt-3 pb-[calc(150px+env(safe-area-inset-bottom))] sm:px-6 lg:ml-[256px] lg:px-8 lg:pt-8 lg:pb-12">
         <div className="mx-auto max-w-[1200px]">{children}</div>
       </main>
       <MobileTabBar route={route} />

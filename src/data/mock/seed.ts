@@ -14,6 +14,7 @@ import type {
   Quote,
   Snapshot,
   Supplier,
+  Task,
 } from '../../domain/types';
 import { reais } from '../../lib/money';
 
@@ -255,6 +256,15 @@ contract('bernardi', 'bernardi', 'terno', 'Terno sob medida', 1650, '2026-10-25'
   { label: 'Parcela 3/3', amount: 575, due: '2027-08-25' },
 ]);
 
+// ── Tarefas
+const tasks: Task[] = [
+  { id: 'tsk_degustacao', title: 'Agendar degustação do buffet', assigneeId: 'per_bia', notes: 'Levar a lista de restrições alimentares dos convidados.\nPerguntar sobre opção vegana.', dueDate: '2026-11-20', done: false, ...audit },
+  { id: 'tsk_lista', title: 'Fechar lista de convidados', assigneeId: 'per_casal', notes: 'Limite de 150 pessoas pelo contrato do espaço.', dueDate: '2026-10-25', done: false, ...audit },
+  { id: 'tsk_cartorio', title: 'Separar documentos para o cartório', assigneeId: 'per_vini', notes: 'Certidões de nascimento atualizadas, RG, comprovante de residência e 2 testemunhas.', dueDate: '2027-06-01', done: false, ...audit },
+  { id: 'tsk_padrinhos', title: 'Convidar os padrinhos', assigneeId: 'per_casal', dueDate: null, done: true, doneAt: '2026-10-10', ...audit },
+  { id: 'tsk_musicas', title: 'Escolher músicas da cerimônia', assigneeId: null, dueDate: null, done: false, ...audit },
+];
+
 export function createSeed(): Snapshot {
   return structuredClone({
     wedding: {
@@ -278,5 +288,6 @@ export function createSeed(): Snapshot {
       { id: 'usr_bia', name: 'Bia', email: 'bia@example.com', personId: 'per_bia' },
       { id: 'usr_vini', name: 'Vini', email: 'vini@example.com', personId: 'per_vini' },
     ],
+    tasks,
   } satisfies Snapshot);
 }

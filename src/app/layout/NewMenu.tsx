@@ -1,4 +1,4 @@
-import { FilePlus2, HandCoins, Plus, ReceiptText, Store, type LucideIcon } from 'lucide-react';
+import { FilePlus2, HandCoins, ListChecks, Plus, ReceiptText, Store, type LucideIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useFinance } from '../../data/hooks/useSnapshot';
 import { QuoteForm } from '../../features/budget/QuoteForm';
@@ -6,15 +6,17 @@ import { ContractForm } from '../../features/contracts/ContractForm';
 import { QuickExpenseSheet } from '../../features/expenses/QuickExpenseSheet';
 import { useRegisterPayment } from '../../features/payments/PaymentContext';
 import { SupplierForm } from '../../features/suppliers/SupplierForm';
+import { TaskForm } from '../../features/tasks/TaskForm';
 import { href, navigate, parseHash } from '../router';
 
-type Action = 'payment' | 'supplier' | 'quote' | 'expense';
+type Action = 'payment' | 'supplier' | 'quote' | 'expense' | 'task';
 
 const ITEMS: { id: Action; label: string; hint: string; icon: LucideIcon }[] = [
   { id: 'payment', label: 'Registrar pagamento', hint: 'de uma parcela', icon: HandCoins },
   { id: 'expense', label: 'Despesa rápida', hint: 'compra à vista', icon: ReceiptText },
   { id: 'quote', label: 'Nova proposta', hint: 'para comparar', icon: FilePlus2 },
   { id: 'supplier', label: 'Novo fornecedor', hint: '', icon: Store },
+  { id: 'task', label: 'Nova tarefa', hint: '', icon: ListChecks },
 ];
 
 /** Botão global "+ Novo": as ações frequentes a 2 cliques de qualquer tela */
@@ -57,16 +59,16 @@ export function NewMenu({ variant = 'button' }: { variant?: 'button' | 'fab' | '
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
           aria-label="Novo"
-          className="btn-grad -mt-6 flex h-14 w-14 items-center justify-center rounded-full text-white shadow-glow ring-4 ring-surface"
+          className="btn-grad flex h-14 w-14 items-center justify-center rounded-full text-white shadow-glow ring-4 ring-surface/80"
         >
-          <Plus size={20} strokeWidth={2} aria-hidden />
+          <Plus size={22} strokeWidth={2.2} aria-hidden />
         </button>
       )}
       {open && (
         <div
           role="menu"
           className={`absolute z-40 w-64 rounded-[20px] bg-surface p-2 shadow-hover ring-1 ring-sand ${
-            variant === 'button' ? 'right-0 top-11' : variant === 'sidebar' ? 'left-0 top-12' : 'bottom-14 left-1/2 -translate-x-1/2'
+            variant === 'button' ? 'right-0 top-11' : variant === 'sidebar' ? 'left-0 top-12' : 'bottom-16 right-0'
           }`}
         >
           {ITEMS.map(({ id, label, hint, icon: Icon }) => (
@@ -96,6 +98,7 @@ export function NewMenu({ variant = 'button' }: { variant?: 'button' | 'fab' | '
             onSaved={(id, andContract) => (andContract ? setContractFor(id) : navigate(href.supplier(id)))}
           />
           <QuoteForm open={action === 'quote'} onClose={() => setAction(null)} snapshot={data.snapshot} categoryId={currentCategory} />
+          <TaskForm open={action === 'task'} onClose={() => setAction(null)} snapshot={data.snapshot} />
           <QuickExpenseSheet open={action === 'expense'} onClose={() => setAction(null)} snapshot={data.snapshot} />
           {contractFor && (
             <ContractForm

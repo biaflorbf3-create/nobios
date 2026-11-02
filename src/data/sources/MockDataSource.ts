@@ -38,7 +38,9 @@ export class MockDataSource implements DataSource {
 function read(): Snapshot | null {
   try {
     const raw = localStorage.getItem(KEY);
-    return raw ? (JSON.parse(raw) as Snapshot) : null;
+    if (!raw) return null;
+    const s = JSON.parse(raw) as Snapshot;
+    return { ...s, tasks: s.tasks ?? [] };
   } catch {
     return null;
   }

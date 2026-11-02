@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
  * Rotas por âncora simples (#painel, #fornecedores, #fornecedor-sup-bella …).
  * Só letras, números e hífens: funciona em qualquer hospedagem estática.
  */
-export const SECTIONS = ['painel', 'pagamentos', 'fornecedores', 'orcamento', 'ajustes'] as const;
+export const SECTIONS = ['painel', 'pagamentos', 'tarefas', 'fornecedores', 'orcamento', 'ajustes'] as const;
 export type Section = (typeof SECTIONS)[number];
 
 export type Route =

@@ -7,6 +7,7 @@ import { BudgetPage } from '../features/budget/BudgetPage';
 import { CategoryDetailPage } from '../features/budget/CategoryDetailPage';
 import { DashboardPage } from '../features/dashboard/DashboardPage';
 import { PaymentsPage } from '../features/payments/PaymentsPage';
+import { TasksPage } from '../features/tasks/TasksPage';
 import { SettingsPage } from '../features/settings/SettingsPage';
 import { SupplierDetailPage } from '../features/suppliers/SupplierDetailPage';
 import { SuppliersPage } from '../features/suppliers/SuppliersPage';
@@ -43,6 +44,8 @@ export function App() {
         <DashboardPage />
       ) : route.name === 'pagamentos' ? (
         <PaymentsPage />
+      ) : route.name === 'tarefas' ? (
+        <TasksPage />
       ) : route.name === 'fornecedores' ? (
         <SuppliersPage />
       ) : route.name === 'fornecedor' ? (

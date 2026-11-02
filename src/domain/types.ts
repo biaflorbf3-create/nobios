@@ -131,6 +131,18 @@ export interface User {
   personId?: string;
 }
 
+/** Tarefa do casal (checklist do casamento) */
+export interface Task extends Audit {
+  id: string;
+  title: string;
+  /** Person.id; null = sem responsável */
+  assigneeId: string | null;
+  notes?: string;
+  dueDate: ISODate | null;
+  done: boolean;
+  doneAt?: ISODate;
+}
+
 /** Tudo o que o app precisa, carregado de uma vez */
 export interface Snapshot {
   wedding: Wedding;
@@ -142,6 +154,7 @@ export interface Snapshot {
   payments: Payment[];
   people: Person[];
   users: User[];
+  tasks: Task[];
 }
 
 export type EntityName = Exclude<keyof Snapshot, 'wedding'> | 'wedding';

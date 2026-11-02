@@ -7,6 +7,7 @@ const PREFIX = {
   payments: 'pay',
   people: 'per',
   users: 'usr',
+  tasks: 'tsk',
 } as const;
 
 /** ids legíveis e ordenáveis por criação: sup_lq3k9x2a8f */

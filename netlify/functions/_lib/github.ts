@@ -9,7 +9,7 @@
  * Escrita: Git Data API → um único commit com todas as mudanças da ação (ex.: contrato + 6 parcelas).
  */
 
-export const COLLECTIONS = ['categories', 'suppliers', 'quotes', 'contracts', 'installments', 'payments', 'people', 'users'] as const;
+export const COLLECTIONS = ['categories', 'suppliers', 'quotes', 'contracts', 'installments', 'payments', 'people', 'users', 'tasks'] as const;
 export type Collection = (typeof COLLECTIONS)[number];
 export type Entity = Collection | 'wedding';
 
@@ -25,6 +25,7 @@ export interface Snapshot {
   payments: Json[];
   people: Json[];
   users: Json[];
+  tasks: Json[];
 }
 
 export type Change = { op: 'put'; entity: Entity; record: Json } | { op: 'delete'; entity: Collection; id: string };
@@ -104,7 +105,7 @@ export async function readSnapshot(): Promise<{ snapshot: Snapshot; sha: string 
   if (!repo.ref) throw new HttpError(404, `Branch "${branch}" não encontrada em ${owner}/${name}.`);
   if (!repo.object) throw new HttpError(404, `Pasta "${dir}/" não encontrada no repositório. Rode "npm run data:init" e faça o commit.`);
 
-  const snapshot: Snapshot = { wedding: {}, categories: [], suppliers: [], quotes: [], contracts: [], installments: [], payments: [], people: [], users: [] };
+  const snapshot: Snapshot = { wedding: {}, categories: [], suppliers: [], quotes: [], contracts: [], installments: [], payments: [], people: [], users: [], tasks: [] };
   let hasWedding = false;
   for (const folder of repo.object.entries) {
     if (folder.type !== 'tree' || !folder.object || !('entries' in folder.object) || !folder.object.entries) continue;
