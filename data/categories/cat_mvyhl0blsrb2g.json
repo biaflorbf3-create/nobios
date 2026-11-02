@@ -1,9 +1,9 @@
 {
   "createdAt": "2026-11-01T23:54:06.177Z",
   "id": "cat_mvyhl0blsrb2g",
-  "name": "Almoço de Noivado",
-  "plannedBudget": null,
+  "name": "Convite dos Participantes",
+  "plannedBudget": 300000,
   "need": "required",
   "sortOrder": 25,
-  "updatedAt": "2026-11-01T23:54:37.159Z"
+  "updatedAt": "2026-11-02T20:54:32.626Z"
 }
