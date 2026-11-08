@@ -1,5 +1,5 @@
 import { AlertCircle } from 'lucide-react';
-import { Area, CartesianGrid, ComposedChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Area, Bar, BarChart, Cell, LabelList, CartesianGrid, ComposedChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import type { Cashflow } from '../../../domain/finance';
 import { formatMonthKey, formatMonthLong } from '../../../lib/dates';
 import { formatMoney, formatMoneyShort } from '../../../lib/money';
@@ -36,8 +36,9 @@ interface Row {
  * linha tracejada do que falta pagar (daqui para frente). O destaque marca o mês atual.
  */
 export function CashflowChart({ cashflow, chart, periodLabel }: { cashflow: Cashflow; chart: Cashflow; periodLabel: string }) {
-  const { colors, theme } = useTheme();
-  const dueColor = theme === 'dark' ? '#E9A8F5' : '#C026D3';
+  const { colors } = useTheme();
+  // a pagar em âmbar: contraste claro com o roxo do pago, nos dois temas
+  const dueColor = colors.warn;
   const crossesYear = new Set(chart.months.map((m) => m.key.slice(0, 4))).size > 1;
   const curIdx = chart.months.findIndex((m) => m.isCurrent);
   const rows: Row[] = chart.months.map((m, i) => ({
@@ -55,9 +56,16 @@ export function CashflowChart({ cashflow, chart, periodLabel }: { cashflow: Cash
   const paidShown = rows.reduce((s, r) => s + r.paid, 0);
   const peak = cashflow.peakMonth;
   const single = rows.length === 1;
+  // bolinha no mês atual: marca onde cada linha começa/termina (e aparece mesmo se for um ponto só)
+  const todayDot = (color: string) => (p: { cx?: number; cy?: number; index?: number; value?: unknown }) =>
+    p.index === curIdx && p.cy != null && !Number.isNaN(p.cy) ? (
+      <circle key={`d${color}`} cx={p.cx} cy={p.cy} r={4.5} fill={colors.surface} stroke={color} strokeWidth={2.5} />
+    ) : (
+      <g key={`n${color}${p.index}`} />
+    );
   const narrow = useNarrow();
   const step = narrow && rows.length > 7 ? Math.ceil(rows.length / 6) : 1;
-  const data = single ? [rows[0], { ...rows[0], key: 'end', label: '' }] : rows;
+  const data = rows;
 
   return (
     <section className="card flex h-full flex-col p-5 sm:p-6" aria-label="Fluxo de pagamentos">
@@ -95,6 +103,25 @@ export function CashflowChart({ cashflow, chart, periodLabel }: { cashflow: Cash
             aria-label={`Pagamentos por mês. ${rows.map((r) => `${r.label}: pago ${formatMoney(r.paid)}, a pagar ${formatMoney(r.due)}`).join('; ')}`}
           >
             <ResponsiveContainer width="100%" height="100%">
+              {single ? (
+                <BarChart
+                  data={[
+                    { name: 'Pago', value: rows[0].paid },
+                    { name: 'A pagar', value: rows[0].due },
+                  ]}
+                  margin={{ top: 24, right: 12, bottom: 0, left: 0 }}
+                  barCategoryGap="28%"
+                >
+                  <CartesianGrid vertical={false} stroke={colors.sand} />
+                  <XAxis dataKey="name" tickLine={false} axisLine={false} height={26} tick={{ fill: colors.inkMuted, fontSize: 12, fontWeight: 600 }} />
+                  <YAxis tickFormatter={(v: number) => formatMoneyShort(v)} tickLine={false} axisLine={false} width={50} tick={{ fill: colors.inkFaint, fontSize: 11 }} />
+                  <Bar dataKey="value" radius={[12, 12, 4, 4]} maxBarSize={88} isAnimationActive={false}>
+                    <Cell fill={colors.accent} />
+                    <Cell fill={dueColor} />
+                    <LabelList dataKey="value" position="top" formatter={(v: unknown) => formatMoney(Number(v))} style={{ fill: colors.ink, fontSize: 12, fontWeight: 700 }} />
+                  </Bar>
+                </BarChart>
+              ) : (
               <ComposedChart data={data} margin={{ top: 14, right: 12, bottom: 0, left: 0 }}>
                 <defs>
                   <linearGradient id="paidFill" x1="0" y1="0" x2="0" y2="1">
@@ -102,7 +129,7 @@ export function CashflowChart({ cashflow, chart, periodLabel }: { cashflow: Cash
                     <stop offset="100%" stopColor={colors.accent} stopOpacity={0} />
                   </linearGradient>
                   <linearGradient id="dueFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor={dueColor} stopOpacity={0.16} />
+                    <stop offset="0%" stopColor={dueColor} stopOpacity={0.22} />
                     <stop offset="100%" stopColor={dueColor} stopOpacity={0} />
                   </linearGradient>
                 </defs>
@@ -113,9 +140,10 @@ export function CashflowChart({ cashflow, chart, periodLabel }: { cashflow: Cash
                   <ReferenceLine x={current.label} stroke={colors.inkFaint} strokeDasharray="2 4" label={{ value: 'hoje', position: 'top', fill: colors.inkMuted, fontSize: 10.5 }} />
                 )}
                 <Tooltip cursor={{ stroke: colors.accent, strokeWidth: 1, strokeDasharray: '4 4' }} content={(p) => <Tip active={p.active} payload={p.payload as never} />} />
-                <Area type="monotone" dataKey="dueLine" name="A pagar" stroke={dueColor} strokeWidth={2.25} strokeDasharray="6 5" fill="url(#dueFill)" isAnimationActive={false} dot={false} activeDot={{ r: 4.5, fill: dueColor, stroke: colors.surface, strokeWidth: 2 }} />
-                <Area type="monotone" dataKey="paidLine" name="Pago" stroke={colors.accent} strokeWidth={2.5} fill="url(#paidFill)" isAnimationActive={false} dot={false} activeDot={{ r: 5, fill: colors.accent, stroke: colors.surface, strokeWidth: 2 }} />
+                <Area type="monotone" dataKey="dueLine" name="A pagar" stroke={dueColor} strokeWidth={2.25} strokeDasharray="6 5" fill="url(#dueFill)" isAnimationActive={false} dot={todayDot(dueColor)} activeDot={{ r: 4.5, fill: dueColor, stroke: colors.surface, strokeWidth: 2 }} />
+                <Area type="monotone" dataKey="paidLine" name="Pago" stroke={colors.accent} strokeWidth={2.5} fill="url(#paidFill)" isAnimationActive={false} dot={todayDot(colors.accent)} activeDot={{ r: 5, fill: colors.accent, stroke: colors.surface, strokeWidth: 2 }} />
               </ComposedChart>
+              )}
             </ResponsiveContainer>
           </div>
         </>
