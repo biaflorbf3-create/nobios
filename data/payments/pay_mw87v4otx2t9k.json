@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-11-08T19:19:43.997Z",
+  "id": "pay_mw87v4otx2t9k",
+  "contractId": "con_mvyfs702rqj85",
+  "installmentId": "ins_mvyfs7031pmn20",
+  "amount": 500000,
+  "paidAt": "2026-11-06",
+  "method": "pix",
+  "paidBy": "per_casal",
+  "updatedAt": "2026-11-08T19:20:14.663Z"
+}
