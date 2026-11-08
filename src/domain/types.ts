@@ -21,6 +21,8 @@ export interface Wedding extends Audit {
   nearLimitPct: number;
   /** alerta de orçamento geral a partir de N% comprometido */
   overallAlertPct: number;
+  /** ordem dos blocos do painel (ids de DASHBOARD_BLOCKS); ausente = ordem padrão */
+  dashboardOrder?: string[];
 }
 
 export type CategoryNeed = 'required' | 'optional' | 'dismissed';
