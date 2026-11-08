@@ -1,0 +1,14 @@
+{
+  "createdAt": "2026-11-08T22:16:11.350Z",
+  "id": "con_mw8e61xym7wre",
+  "supplierId": "sup_mvyiqbkd46z9h",
+  "status": "active",
+  "quoteId": "quo_mvyiqbkdfli02",
+  "updatedAt": "2026-11-08T22:16:43.271Z",
+  "categoryId": "cat_mvyh2iw0t8x11",
+  "title": "Assessoria",
+  "totalValue": 400000,
+  "contractDate": "2026-11-08",
+  "paymentMethodDefault": "pix",
+  "paymentTerms": "50% de entrada ou parcelar tudo até 30 dias antes do casamento"
+}

@@ -2,11 +2,12 @@
   "createdAt": "2026-11-02T00:26:13.645Z",
   "id": "quo_mvyiqbkdfli02",
   "supplierId": "sup_mvyiqbkd46z9h",
-  "status": "open",
+  "status": "accepted",
   "receivedAt": "2026-11-01",
-  "updatedAt": "2026-11-08T22:14:59.317Z",
+  "updatedAt": "2026-11-08T22:16:43.271Z",
   "categoryId": "cat_mvyh2iw0t8x11",
   "amount": 400000,
   "paymentTerms": "50% de entrada ou parcelar tudo até 30 dias antes do casamento",
-  "favorite": true
+  "favorite": true,
+  "contractId": "con_mw8e61xym7wre"
 }
