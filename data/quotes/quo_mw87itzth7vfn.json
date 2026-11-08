@@ -4,10 +4,10 @@
   "supplierId": "sup_mw87itztcdhoo",
   "status": "open",
   "receivedAt": "2026-11-08",
-  "updatedAt": "2026-11-08T19:10:41.958Z",
+  "updatedAt": "2026-11-08T19:12:03.595Z",
   "categoryId": "cat_fotografia",
   "amount": 1325000,
   "paymentTerms": "30%  R$3.500,00 R$1.750 30/11  R$1.750 30/12",
   "details": "R$812,50",
-  "favorite": false
+  "favorite": true
 }
