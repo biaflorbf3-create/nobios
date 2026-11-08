@@ -7,15 +7,15 @@
   "dueSoonDays": 7,
   "nearLimitPct": 85,
   "overallAlertPct": 90,
-  "updatedAt": "2026-11-08T22:53:13.113Z",
+  "updatedAt": "2026-11-08T22:53:37.470Z",
   "dashboardOrder": [
     "hero",
     "ring",
+    "alerts",
     "cashflow",
     "upcoming",
     "spend",
     "categories",
-    "alerts",
     "budget"
   ]
 }
