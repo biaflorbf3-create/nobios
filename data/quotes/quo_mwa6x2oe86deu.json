@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-11-10T04:28:47.437Z",
+  "id": "quo_mwa6x2oe86deu",
+  "supplierId": "sup_mwa6x2oeo2if8",
+  "status": "open",
+  "receivedAt": "2026-11-10",
+  "updatedAt": "2026-11-10T04:28:50.211Z",
+  "categoryId": "cat_bebidas",
+  "amount": 380000,
+  "favorite": false
+}
